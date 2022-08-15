@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\eskul;
+use App\Http\Resources\Ekstrakurikuler;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,23 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', [eskul::class, 'view']);
+// route::redirect('/dashboard','/dashboa');
+
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
 });
-route::redirect('/dashboard','/');
 
-
-
+Route::get('/detail', function () {
+    return view('user.detail');
+});
 Route::resource('ekstrakurikuler', eskul::class);
 
-
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/', function () {
-        return view('index');
-    })->name('index');
-});

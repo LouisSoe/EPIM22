@@ -12,16 +12,17 @@
                                     <div class="text-center">
                                         <h1 class="h3 text-gray-900 mb-4">L O G I N</h1>
                                     </div>
-                                    <form action="{{ route('ekstrakurikuler.store') }}" method="POST" class="user" >
+                                    <form action="{{ route('ekstrakurikuler.update', $ekstrakurikuler->id ) }}" method="POST" class="user" >
                                         @csrf
+                                        @method('PUT')
                                         <div class="form-group">
                                             <input type="text" name="nama_eskul" class="form-control form-control-user"
-                                             aria-describedby="emailHelp"
+                                             aria-describedby="emailHelp" value="{{ $ekstrakurikuler->nama_eskul }}"
                                                 placeholder="Nama Ekstrakurikuler">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="deskripsi" class="form-control form-control-user"
-                                                 placeholder="Deskripsi">
+                                                 placeholder="Deskripsi" value="{{ $ekstrakurikuler->deskripsi }}">
                                         </div>
                                         {{-- <div class="form-group">
                                             <input type="file" name="image" >

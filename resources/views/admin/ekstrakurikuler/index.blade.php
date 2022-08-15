@@ -19,15 +19,6 @@
                         <th>Opsi</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Ekstrakurikuler</th>
-                        <th>Status</th>
-                        <th>Ditambahkan Tanggal</th>
-                        <th>Opsi</th>
-                    </tr>
-                </tfoot>
                 <tbody>
                     @php
                         $no = 1
@@ -35,15 +26,15 @@
                     @forelse ($ekstrakurikuler as $ekstra)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $ekstra->name }}</td>
-                        <td>{{ $ekstra->status }}</td>
+                        <td>{{ $ekstra->nama_eskul }}</td>
+                        <td>{{ $ekstra->deskripsi }}</td>
                         <td>{{ $ekstra->created_at }}</td>
                         <td>
-                            <form action="" onsubmit="return confirm('Apakah Anda Yakin ? ')" method="post">
-                                <a href="" class="btn btn-gradient-warning btn-sm">Edit</a>
+                            <form action="{{ route('ekstrakurikuler.destroy', $ekstra->id) }}" onsubmit="return confirm('Apakah Anda Yakin ? ')" method="post">
+                                <a href="{{ route('ekstrakurikuler.edit', $ekstra->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-gradient-danger btn-sm">Delete</button>
+                                <button class="btn btn-danger btn-sm">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -52,8 +43,7 @@
                         <th colspan="7" class="text-center">Data Tidak Ada</th>
                     </tr>
                     @endforelse
-
-
+                    
                 </tbody>
             </table>
         </div>
