@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\EkstrakurikulerController;
+use App\Http\Controllers\eskul;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,15 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-
-Route::get('livewire', function(){
-    return view('livewire');
-});
+route::redirect('/dashboard','/');
 
 
-Route::resource('ekstrakurikuler', EkstrakurikulerController::class);
 
-Route::view('dashboard', 'admin.dashboard')->name('dashboard');
+Route::resource('ekstrakurikuler', eskul::class);
+
 
 
 Route::middleware([
