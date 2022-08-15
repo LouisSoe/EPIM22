@@ -21,8 +21,20 @@
       </div>
     </div>
   </div>
-  <div class="content text-center mx-10">
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque explicabo molestiae labore voluptatem temporibus. Quasi, id dolorem magni sit, fugiat illo quia voluptatibus impedit nisi doloremque, eligendi aliquid optio voluptates.</p>
-  </div>
+  <div class=" text-center col-md-5">
+    <h4>Deskripsi :</h4>
+    <h6>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque explicabo molestiae labore voluptatem temporibus. Quasi, id dolorem magni sit, fugiat illo quia voluptatibus impedit nisi doloremque, eligendi aliquid optio voluptates.</h6>
+    <br>
+    <br>
+    <h4>Syarat :</h4>
+    <ul>
+        <li>Badan Tinggi</li>
+        <li>Pintar dan Bertanggung jawab</li>
+        <li>Kuat Fisik dan Mental</li>
+    </ul>
+    <a href="{{ route('daftar') }}" class="btn btn-sm btn-primary">D A F T A R</a>
+</div>
+
+
 
 @endsection

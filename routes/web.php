@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\eskul;
 use App\Http\Resources\Ekstrakurikuler;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,4 @@ Route::get('/detail', function () {
 });
 Route::resource('ekstrakurikuler', eskul::class);
 
+Route::resource('daftar', DaftarController::class);
