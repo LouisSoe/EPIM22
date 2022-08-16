@@ -11,13 +11,15 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
+  --black:#000000;
+  --light-yellow:#ede28d;
   --blue: #4e73df;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
   --red: #e74a3b;
   --orange: #fd7e14;
-  --yellow: #f6c23e;
+  --yellow: #ffdc84;
   --green: #1cc88a;
   --teal: #20c9a6;
   --cyan: #36b9cc;
@@ -67,6 +69,22 @@ body {
   color: #858796;
   text-align: left;
   background-color: #fff;
+}
+.bg-light-yellow {
+  background-image: linear-gradient(to top, rgba(255,0,0,0), #ede28d);
+}
+
+.bg-black{
+  color: #000000;
+}
+
+.bg-yellow{
+  background-color: #ffdc84 ;
+  
+}
+
+.text-black {
+  color: #000000;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {

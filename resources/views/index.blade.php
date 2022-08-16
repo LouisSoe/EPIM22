@@ -1,27 +1,94 @@
 @extends('layouts.user')
 @section('content')
-    <h1 class="text-center"> EKSTRAKULIKULER</h1>
+<ul class="nav justify-content-center">
+  <li class="nav-item mr-3 w-25">
+    <a class="nav-link active btn btn-primary" aria-current="page" href="#">EKSTRAKULIKULER</a>
+  </li>
+  <li class="nav-item ml-3 w-25">
+    <a class="nav-link btn btn-dark" href="#">DAFTAR EKSTRAKULIKULER</a>
+  </li>
+</ul>
+<br>
+<br>
+<div class="text-center">
+    <img class="text-center mb-4" src="img/5.jpg" width="150px">
+</div> 
+    <h3 class="text-center" style="color:black;" >SMKN 3 JEMBER</h3>       
+    <h1 class="text-center" style="color:black;" ><b>EKSTRAKULIKULER</b></h1>
     <br>
       <div class="row">
-        @for ($i = 0; $i < sizeof($eskul); $i++)
-
-        <a class="col-lg-6 col-md-6 mb-4 text-decoration-none" href="">
-            <div class="card border-left-danger h-100 py-2">
+        
+        <a class="col-lg-12 col-md-6 mb-4 text-decoration-none" href="">
+            <div class="bg-warning shadow rounded h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
-                        <div class="col-auto mr-4">
-                            <img src="img/k.jpg" class="rounded" width="200px" height="200px" alt="">
+                        <div class="col-auto ml-5 mr-5">
+                            <img src="img/pramuka.jpg" class="rounded" width="300px" height="200px" alt="">
                         </div>
                         <div class="col mr-2">
-                            <h4 class="text-sm font-weight-bold text-danger text-uppercase mb-1">
-                                Pramuka</h4>
-                            <div class="mb-0 text-gray-800">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit neque numquam, reprehenderit eius explicabo eveniet at. Modi placeat veritatis aperiam.</div>
+                            <h3 class="text-sm font-weight-bold text-black text-uppercase mb-3">
+                                Pramuka</h3>
+                            <div class="mb-0 mr-5 text-gray-800 col-md-8">Lorem ipsum dolor sit amet consecteturadasda  safassaasfae e afaefafasfawewe, adipisicing elit. Suscipit neque numquam, reprehenderit eius explicabo eveniet at. Modi placeat veritatis aperiam. asfgafgagfuafufeafahkfuafuakfhuksaf aflias fo aslfhuia sosaflihashfyf</div>
                         </div>
                     </div>
                 </div>
             </div>
         </a>
-        @endfor
+
+       
+        <a class="col-lg-12 col-md-6 mb-4 text-decoration-none" href="">
+            <div class="rounded h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-auto ml-5 mr-5">
+                            <img src="img/pramuka.jpg" class="rounded" width="300px" height="200px" alt="">
+                        </div>
+                        <div class="col mr-2">
+                            <h4 class="text-sm font-weight-bold text-black text-uppercase mb-3">
+                                Pramuka</h4>
+                            <div class="mb-0 mr-5 text-gray-800 col-md-8">Lorem ipsum dolor sit amet consecteturadasda  safassaasfae e afaefafasfawewe, adipisicing elit. Suscipit neque numquam, reprehenderit eius explicabo eveniet at. Modi placeat veritatis aperiam. asfgafgagfuafufeafahkfuafuakfhuksaf aflias fo aslfhuia sosaflihashfyf</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a class="col-lg-12 col-md-6 mb-4 text-decoration-none" href="">
+            <div class="bg-warning shadow rounded h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-auto ml-5 mr-5">
+                            <img src="img/pramuka.jpg" class="rounded" width="300px" height="200px" alt="">
+                        </div>
+                        <div class="col mr-2">
+                            <h3 class="text-sm font-weight-bold text-black text-uppercase mb-3">
+                                Pramuka</h3>
+                            <div class="mb-0 mr-5 text-gray-800 col-md-8">Lorem ipsum dolor sit amet consecteturadasda  safassaasfae e afaefafasfawewe, adipisicing elit. Suscipit neque numquam, reprehenderit eius explicabo eveniet at. Modi placeat veritatis aperiam. asfgafgagfuafufeafahkfuafuakfhuksaf aflias fo aslfhuia sosaflihashfyf</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+       
+        <a class="col-lg-12 col-md-6 mb-4 text-decoration-none" href="">
+            <div class="rounded h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        
+                        <div class="col-auto ml-5 mr-5">
+                            <img src="img/pramuka.jpg" class="rounded" width="300px" height="200px" alt="">
+                        </div>
+                        <div class="col mr-2">
+                            <h4 class="text-sm font-weight-bold text-black text-uppercase mb-3">
+                                Pramuka</h4>
+                            
+                            <div class="mb-0 mr-5 text-gray-800 col-md-8">Lorem ipsum dolor sit amet consecteturadasda  safassaasfae e afaefafasfawewe, adipisicing elit. Suscipit neque numquam, reprehenderit eius explicabo eveniet at. Modi placeat veritatis aperiam. asfgafgagfuafufeafahkfuafuakfhuksaf aflias fo aslfhuia sosaflihashfyf</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+      
 
 
 </div>

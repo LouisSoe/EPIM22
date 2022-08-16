@@ -74,8 +74,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('daftar.dataPendaftaran') }}">
-                    <i class="fas fa-fw fa-table"></i>
+                 <a class="nav-link" href="{{ route('datapendaftaran') }}">                    <i class="fas fa-fw fa-table"></i>
                     <span>Data Pendaftaran</span></a>
             </li>
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\eskul;
 use App\Http\Resources\Ekstrakurikuler;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\dataallsiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +17,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [eskul::class, 'view']);
+Route::get('/', [eskul::class, 'view'])->name('homepage');
 // route::redirect('/dashboard','/dashboa');
-
+Route::get('/profile', function () {
+    return view('user.userprofile');
+});
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/detail', function () {
-    return view('user.detail');
+Route::get('/detail',[eskul::class, 'detail'])->name('detail');
+Route::get('/testrafly', function () {
+    return view('test.testfront');
 });
 Route::resource('ekstrakurikuler', eskul::class);
 
 Route::resource('daftar', DaftarController::class);
+Route::get('datapendaftaran', [DaftarController::class, 'datapendaftaran'])->name('datapendaftaran');
+Route::resource('detail', dataallsiswa::class);
+
+Route::controller(dataallsiswa::class)->group(function () {
+ Route::get('data siswa','view')->name('detailall.siswa');
+});
