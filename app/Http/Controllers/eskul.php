@@ -17,6 +17,12 @@ class eskul extends Controller
         $eskul = Ekstrakurikuler::all();
         return view('index', compact('eskul'));
     }
+    public function detail($id)
+    {
+        $eskul = Ekstrakurikuler::findOrFail($id);
+        $datas = Ekstrakurikuler::all();
+        return view('index', compact('datas', 'eskul'));
+    }
 
     public function create()
     {
@@ -37,7 +43,7 @@ class eskul extends Controller
             // 'gambar' => $request->file('gambar')->store('ekstra')
         ]);
         if ($eskul) {
-            return redirect()->route('admin.ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan');
+            return redirect()->route('ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan');
         } else {
             return redirect()->back()->withInput()->with('error', 'Ekstrakurikuler gagal ditambahkan');
         }
@@ -78,10 +84,12 @@ class eskul extends Controller
     {
         $eskul = Ekstrakurikuler::findOrFail($id);
         $eskul->delete();
-        if ($eskul) {
-            return redirect()->route('ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan');
-        } else {
-            return redirect()->route('ekstrakurikuler.index')->with('error', 'Ekstrakurikuler gagal ditambahkan');
-        }
+                    return redirect()->route('ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan');
+
+        // if ($eskul) {
+        //     return redirect()->route('ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan');
+        // } else {
+        //     return redirect()->route('ekstrakurikuler.index')->with('error', 'Ekstrakurikuler gagal ditambahkan');
+        // }
     }
 }
