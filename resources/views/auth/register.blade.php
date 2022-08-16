@@ -5,13 +5,14 @@
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-xl-6 col-lg-12 col-md-9">
+            <div class="col-xl-5 col-lg-12 col-md-9">
 
                 <div class="card o-hidden rounded border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="p-5">
                             <div class="text-center">
+                            <img class="mb-3" src="img/5.jpg" width="80px">
                                 <h1 class="h4 text-gray-900 mb-4">R E G I S T E R</h1>
                             </div>
                             <form action="{{ route('register') }}" method="POST" class="user">
@@ -38,7 +39,7 @@
                                         class="form-control form-control-user" id="exampleInputPassword"
                                         placeholder="Password Confirmation">
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block">register</button>
+                                <button type="submit" class="btn btn-warning btn-user btn-block">register</button>
                             </form>
 
                         </div>
