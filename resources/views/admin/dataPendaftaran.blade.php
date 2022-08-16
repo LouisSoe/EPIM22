@@ -16,8 +16,9 @@
                         <th>Nama Lengkap</th>
                         <th>NIM</th>
                         <th>Prodi</th>
-                        <th>Bergabung</th>
+                        <th>Mengikuti</th>
                         <th>Alasan</th>
+                        <th>Tanggal Bergabung</th>
                         <th>Opsi</th>
                     </tr>
                 </thead>
@@ -45,7 +46,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <th colspan="7" class="text-center">Data Tidak Ada</th>
+                        <th colspan="8" class="text-center">Data Tidak Ada</th>
                     </tr>
                     @endforelse
 

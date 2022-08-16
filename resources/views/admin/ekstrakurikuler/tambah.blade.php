@@ -10,7 +10,7 @@
                         <!-- Nested Row within Card Body -->
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h3 text-gray-900 mb-4">L O G I N</h1>
+                                        <h1 class="h3 text-gray-900 mb-4">T A M B A H</h1>
                                     </div>
                                     <form action="{{ route('ekstrakurikuler.store') }}" method="POST" class="user" >
                                         @csrf

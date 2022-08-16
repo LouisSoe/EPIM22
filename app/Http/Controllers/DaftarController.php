@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ekstrakurikuler;
 use Illuminate\Http\Request;
 use App\Models\Pendaftaran;
+use App\Models\User;
 
 class DaftarController extends Controller
 {
 
-    public function index()
+    public function index($id)
     {
-        return view('user.daftar');
+        // $data = User::findOrFail($id);
+        $ekstras = ekstrakurikuler::all();
+        return view('user.daftar', compact('data', 'ekstras'));
     }
 
 
@@ -34,13 +38,13 @@ class DaftarController extends Controller
 
         if($daftar)
         {
-            return redirect()->route('detail')->with('success', 'Data Berhasil Dikirim');
+            return redirect()->route('homepage')->with('success', 'Data Berhasil Dikirim');
         }else{
             return redirect()->back()->withInput()->with('error', 'Data Gagal Dikirim');
         }
     }
 
-    public function dataPendaftaran()
+    public function datapendaftaran()
     {
         $data = Pendaftaran::latest()->get();
         return view('admin/dataPendaftaran', compact('data'));
@@ -48,7 +52,8 @@ class DaftarController extends Controller
     public function show($id)
     {
         $data = Pendaftaran::findOrFail($id);
-        return view('admin/dataPendaftaran', compact('data'));
+        $ekstras = ekstrakurikuler::all();
+        return view('admin/dataPendaftaran', compact('data', 'ekstras'));
     }
 
     public function edit($id)
@@ -58,18 +63,39 @@ class DaftarController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $daftar = User::findOrFail($id);
+        $this->validate($request, [
+            'name' => 'required|string',
+            'nim' => 'required',
+            'prodi' => 'required',
+            'no_hp' => 'required',
+            'alasan' => 'required'
+        ]);
+
+        $daftar->update([
+            'name' => $request->name,
+            'nim' => $request->nim,
+            'ekstrakurikuler_id' => $request->ekstrakurikuler_id,
+            'prodi' => $request->prodi,
+            'no_hp' => $request->no_hp,
+            'alasan' => $request->alasan,
+        ]);
+
+        if($daftar)
+        {
+            return redirect()->route('homepage')->with('success', 'Data Berhasil Dikirim');
+        }else{
+            return redirect()->back()->withInput()->with('error', 'Data Gagal Dikirim');
+        }
     }
 
     public function destroy($id)
     {
-        $daftar = Pendaftaran::findOrFail($id);
-        $daftar->destroy();
-        if($daftar){
-            return redirect()->route('ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan');
-        } else {
-            return redirect()->route('ekstrakurikuler.index')->with('error', 'Ekstrakurikuler gagal ditambahkan');
+        $daftar = User::findOrFail($id);
+        
 
-        }
+        $daftar->update([
+            'ekstrakurikuler_id' => null,
+        ]);
     }
 }
