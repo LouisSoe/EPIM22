@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ekstrakurikuler;
 use App\Models\daftar;
+use App\Models\User;
 
 class daftarcontroller extends Controller
 {
@@ -28,48 +29,24 @@ class daftarcontroller extends Controller
         ]);
         return redirect()->route('homepage');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function datapendaftaran()
     {
-        //
+        $data = User::all();
+        return view('admin/dataPendaftaran', compact('data'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // public function show($id)
+    // {
+    //     $data = Pendaftaran::findOrFail($id);
+    //     $ekstras = ekstrakurikuler::all();
+    //     return view('admin/dataPendaftaran', compact('data', 'ekstras'));
+    //     $data = User::latest()->get();
+    //     return view('admin.dataPendaftaran', compact('data'));
+    // }
     public function destroy($id)
     {
-        //
+      $user = Auth::user()->id;
+        $user->update([
+            'ekstrakurikuler_id' => null,
+        ]);
     }
 }

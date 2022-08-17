@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 <!-- Page Heading -->
-
 <h1 class="h3 mb-2 text-gray-800">Tabel Ekstrakurikuler</h1>
 
 <!-- DataTales Example -->
@@ -16,8 +15,6 @@
                         <th>Nama Lengkap</th>
                         <th>NIM</th>
                         <th>Prodi</th>
-                        <th>Mengikuti</th>
-                        <th>Alasan</th>
                         <th>Tanggal Bergabung</th>
                         <th>Opsi</th>
                     </tr>
@@ -29,12 +26,9 @@
                     @forelse ($data as $bergabung)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $bergabung->nama }}</td>
+                        <td>{{ $bergabung->name }}</td>
                         <td>{{ $bergabung->nim }}</td>
                         <td>{{ $bergabung->prodi }}</td>
-                        <td>Ngambil name ekstra</td>
-                        {{-- <td>{{ $bergabung->bergabung }}</td> --}}
-                        <td>{{ $bergabung->alasan }}</td>
                         <td>{{ $bergabung->created_at }}</td>
                         <td>
                             <form action="{{ route('daftar.destroy', $bergabung->id) }}" onsubmit="return confirm('Apakah Anda Yakin ? ')" method="post">

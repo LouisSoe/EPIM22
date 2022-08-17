@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\daftarController;
+use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\eskul;
 use App\Http\Resources\Ekstrakurikuler;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dataallsiswa;
-use App\Http\Controllers\daftar;
 
 
 /*
@@ -33,22 +32,16 @@ Route::get('/testrafly', function () {
     return view('test.testfront');
 });
 Route::resource('ekstrakurikuler', eskul::class);
+Route::get('datapendaftaran', [DaftarController::class, 'datapendaftaran'])->name('datapendaftaran');
 
-// Route::get('daftar', [DaftarController::class,'daftar'])->name('daftar');
-// Route::get('datapendaftaran', [DaftarController::class, 'datapendaftaran'])->name('datapendaftaran');
-// Route::resource('detail', dataallsiswa::class);
-// Route::resource('Pendaftaran', DaftarController::class);
-
-// Route::controller(DaftarController::class)->group(function () {
-//     // Route::get('Pendaftaran','index')->name('Pendaftaran.index');
-//     Route::get('Pendaftaran/{id}','edit')->name('Pendaftaran.edit');
-//     Route::post('Pendaftaran','store')->name('Pendaftaran.store');
-//     Route::put('Pendaftaran/{id}','update')->name('Pendaftaran.update');
-
-//    });
-Route::controller(daftarcontroller::class)->group(function () {
-    Route::get('Pendaftaran/{id}','index')->name('Pendaftaran.edit');
+Route::controller(Daftarcontroller::class)->group(function () {
+    Route::get('Pendaftaran/{id}','index')->name('Pendaftaran.index');
     Route::post('Pendaftaran','store')->name('Pendaftaran.store');
+    Route::get('datapendaftaran','datapendaftaran')->name('datapendaftaran');
+    Route::get('datapendaftaran','datapendaftaran')->name('datapendaftaran');
+        Route::delete('datapendaftaran/{id}','destroy')->name('daftar.destroy');
+    Route::get('datapendaftaran/{id}','show')->name('daftar.show');
+
 });
 Route::controller(dataallsiswa::class)->group(function () {
  Route::get('data siswa','view')->name('detailall.siswa');

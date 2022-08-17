@@ -19,22 +19,6 @@
                                         <input type="text" name="eskul_id" value="{{ $data->id }}">
                                         <input type="text" name="user_id" value="{{ Auth::user()->id }}">
                                 </div>
-                                {{-- <div class="form-group">
-                                    <input type="text" name="name" class="form-control form-control-user"
-                                        value="{{ Auth::user()->name }}" placeholder="Nama Lengkap">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="nim" class="form-control form-control-user"
-                                        value="{{ Auth::user()->nim }}" placeholder="Nomer Induk Mahasiswa">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="prodi" class="form-control form-control-user"
-                                        value="{{ Auth::user()->prodi }}" placeholder="Prodi">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="no_hp" class="form-control form-control-user"
-                                        value="{{ Auth::user()->no_hp }}" placeholder="No HP">
-                                </div> --}}
 
                                 <button class="btn btn-warning btn-user btn-block">Simpan</button>
                             </form>
