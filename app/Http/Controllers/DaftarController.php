@@ -2,90 +2,74 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ekstrakurikuler;
 use Illuminate\Http\Request;
-use App\Models\Pendaftaran;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use DB;
+use App\Models\ekstrakurikuler;
+use App\Models\daftar;
 
-class DaftarController extends Controller
+class daftarcontroller extends Controller
 {
-
-    public function index()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($id)
     {
-       
-        return view('user.daftar');
-    }
-
-
-    // public function store(Request $request)
-    // {
-    //     $this->validate($request, [
-    //         'nama' => 'required|string',
-    //         'nim' => 'required',
-    //         'prodi' => 'required',
-    //         'no_hp' => 'required',
-    //         'alasan' => 'required'
-    //     ]);
-
-    //     $daftar = Pendaftaran::create([
-    //         'nama' => $request->nama,
-    //         'nim' => $request->nim,
-    //         'prodi' => $request->prodi,
-    //         'no_hp' => $request->no_hp,
-    //         'alasan' => $request->alasan,
-    //     ]);
-
-    //     if($daftar)
-    //     {
-    //         return redirect()->route('homepage')->with('success', 'Data Berhasil Dikirim');
-    //     }else{
-    //         return redirect()->back()->withInput()->with('error', 'Data Gagal Dikirim');
-    //     }
-    // }
-
-    public function datapendaftaran()
-    {
-        $data = User::latest()->get();
-        return view('admin.dataPendaftaran', compact('data'));
-    }
-    // public function show($id)
-    // {
-    //     $data = User::findOrFail($id);
-    //     $ekstras = ekstrakurikuler::all();
-    //     return view('admin/dataPendaftaran', compact('data', 'ekstras'));
-    // }
-
-    public function edit($id)
-    {      
-      $data = Ekstrakurikuler::findOrFail($id);
+         $data = Ekstrakurikuler::findOrFail($id);
 
         return view('user.daftar',compact('data'));
-
+    }
+    public function store(Request $request)
+    {
+        $daftar = daftar::create([
+            'user_id' => $request->user_id,
+            'eskul_id' => $request->eskul_id,
+            
+        ]);
+        return redirect()->route('homepage');
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $user->update([
-            
-            'ekstrakurikulers_id' => $request->ekstrakurikulers_id,
-            
-        ]);
-        if($user)
-        {
-            return redirect()->route('homepage')->with('success', 'Data Berhasil Dikirim');
-        }else{
-            return redirect()->back()->withInput()->with('error', 'Data Gagal Dikirim');
-        }
+        //
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-        $user = Auth::user()->id;
-        $user->update([
-            'ekstrakurikuler_id' => null,
-        ]);
+        //
     }
 }

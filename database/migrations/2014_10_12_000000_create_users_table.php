@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('nim')->unique();
             $table->string('prodi');
-            $table->foreignId('ekstrakurikulers_id')->nullable();
             $table->string('no_hp');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
