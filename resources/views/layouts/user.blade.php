@@ -80,6 +80,13 @@
                              </a>
                            
                         <!-- Nav Item - User Information -->
+                        <ul class="nav justify-content-center">
+                          
+                            <li class="nav-item ml-1 w-3">
+                                <a class="mt-3 btn btn-primary mr-3" href="#">Daftar Siswa</a>
+                            </li>
+                            
+                        <br>
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

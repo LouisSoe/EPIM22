@@ -1,7 +1,6 @@
 @extends('layouts.user')
 @section('content')
-  @forelse($datas as $data)
-    <h2 class="text-center">{{$data->nama_eskul}}</h2>
+    <h2 class="text-center">{{ $eskul->nama_eskul }}</h2>
 
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -35,8 +34,6 @@
     </div>
   </div>
   </div>
-  @empty
-  @endforelse
 
 
 

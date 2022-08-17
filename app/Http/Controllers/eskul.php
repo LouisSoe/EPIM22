@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ekstrakurikuler;
+use Illuminate\Support\Facades\Storage;
+
 
 class eskul extends Controller
 {
@@ -20,8 +22,8 @@ class eskul extends Controller
     public function detail($id)
     {
         $eskul = Ekstrakurikuler::findOrFail($id);
-        $datas = Ekstrakurikuler::all();
-        return view('index', compact('datas', 'eskul'));
+        // $datas = Ekstrakurikuler::all();
+        return view('user.detail', compact('eskul'));
     }
 
     public function create()
@@ -34,13 +36,13 @@ class eskul extends Controller
         $this->validate($request, [
             'nama_eskul' => 'required|string',
             'deskripsi' => 'required',
-            // 'gambar' => 'required'
+            'image' => 'required'
         ]);
 
         $eskul = Ekstrakurikuler::create([
             'nama_eskul' => $request->nama_eskul,
             'deskripsi' => $request->deskripsi,
-            // 'gambar' => $request->file('gambar')->store('ekstra')
+            'image' => $request->file('image')->store('ekstra'),
         ]);
         if ($eskul) {
             return redirect()->route('ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan');
