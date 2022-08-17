@@ -20,8 +20,8 @@ class eskul extends Controller
     public function detail($id)
     {
         $eskul = Ekstrakurikuler::findOrFail($id);
-        $datas = Ekstrakurikuler::all();
-        return view('index', compact('datas', 'eskul'));
+        // $datas = Ekstrakurikuler::all();
+        return view('user.detail',compact('eskul'));
     }
 
     public function create()
