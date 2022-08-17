@@ -12,7 +12,7 @@
                                     <div class="text-center">
                                         <h1 class="h3 text-gray-900 mb-4">T A M B A H</h1>
                                     </div>
-                                    <form action="{{ route('ekstrakurikuler.store') }}" method="POST" class="user" >
+                                    <form action="{{ route('ekstrakurikuler.store') }}" method="POST" class="user" enctype="multipart/form-data" >
                                         @csrf
                                         <div class="form-group">
                                             <input type="text" name="nama_eskul" class="form-control form-control-user"
@@ -23,9 +23,9 @@
                                             <input type="text" name="deskripsi" class="form-control form-control-user"
                                                  placeholder="Deskripsi">
                                         </div>
-                                        {{-- <div class="form-group">
-                                            <input type="file" name="image" >
-                                        </div> --}}
+                                        <div class="form-group">
+                                            <input type="file" class="form-control" name="image" >
+                                        </div>
                                         <button class="btn btn-primary btn-user btn-block">Simpan</button>
                                     </form>
 

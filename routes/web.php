@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/detail',[eskul::class, 'detail'])->name('detail');
+Route::get('/detail/{id}',[eskul::class, 'detail'])->name('detail');
 Route::get('/testrafly', function () {
     return view('test.testfront');
 });

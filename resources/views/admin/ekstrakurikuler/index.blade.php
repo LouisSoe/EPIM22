@@ -14,6 +14,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Ekstrakurikuler</th>
+                        <th>image</th>
                         <th>Status</th>
                         <th>Ditambahkan Tanggal</th>
                         <th>Opsi</th>
@@ -27,6 +28,7 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $ekstra->nama_eskul }}</td>
+                         <td><img src="storage/{{ $ekstra->image }}" width="100" height="100"></td>
                         <td>{{ $ekstra->deskripsi }}</td>
                         <td>{{ $ekstra->created_at }}</td>
                         <td>
