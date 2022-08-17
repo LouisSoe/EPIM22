@@ -19,12 +19,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('nim')->unique();
             $table->string('prodi');
-            $table->foreignId('ekstrakurikulers_id');
+            $table->foreignId('ekstrakurikulers_id')->nullable();
             $table->string('no_hp');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });

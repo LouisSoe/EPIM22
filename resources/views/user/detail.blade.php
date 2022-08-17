@@ -33,7 +33,7 @@
                 aliquid optio voluptates.</h6>
             <br>
             <br>
-            <a href="{{ route('Pendaftaran.edit', Auth::user()->id) }}" class="btn btn-sm btn-primary">D A F T A R</a>
+            <a href="{{ route('Pendaftaran.edit',$eskul->id) }}" class="btn btn-sm btn-primary">D A F T A R</a>
         </div>
     </div>
     </div>

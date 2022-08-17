@@ -30,6 +30,7 @@ class User extends Authenticatable
         'no_hp',
         'prodi',
         'password',
+        'ekstrakurikulers_id',
     ];
 
     /**

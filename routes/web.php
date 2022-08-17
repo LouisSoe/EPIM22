@@ -41,6 +41,7 @@ Route::controller(DaftarController::class)->group(function () {
     // Route::get('Pendaftaran','index')->name('Pendaftaran.index');
     Route::get('Pendaftaran/{id}','edit')->name('Pendaftaran.edit');
     Route::post('Pendaftaran','store')->name('Pendaftaran.store');
+    Route::put('Pendaftaran/{id}','update')->name('Pendaftaran.update');
 
    });
 
