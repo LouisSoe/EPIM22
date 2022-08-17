@@ -1,14 +1,6 @@
 @extends('layouts.user')
 @section('content')
-<ul class="nav justify-content-center">
-  <li class="nav-item mr-3 w-25">
-    <a class="nav-link active btn btn-primary" aria-current="page" href="#">EKSTRAKULIKULER</a>
-  </li>
-  <li class="nav-item ml-3 w-25">
-    <a class="nav-link btn btn-dark" href="#">DAFTAR EKSTRAKULIKULER</a>
-  </li>
-</ul>
-<br>
+
 <br>
 <div class="text-center">
     <img class="text-center mb-4" src="img/5.jpg" width="150px">
