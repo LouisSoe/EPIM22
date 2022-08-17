@@ -26,15 +26,23 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/detail/{id}',[eskul::class, 'detail'])->name('detail');
+Route::get('/detail/{id}', [eskul::class,'detail'])->name('detail');
 Route::get('/testrafly', function () {
     return view('test.testfront');
 });
 Route::resource('ekstrakurikuler', eskul::class);
 
-Route::resource('daftar', DaftarController::class);
+Route::get('daftar', [DaftarController::class,'daftar'])->name('daftar');
 Route::get('datapendaftaran', [DaftarController::class, 'datapendaftaran'])->name('datapendaftaran');
-Route::resource('detail', dataallsiswa::class);
+// Route::resource('detail', dataallsiswa::class);
+// Route::resource('Pendaftaran', DaftarController::class);
+
+Route::controller(DaftarController::class)->group(function () {
+    // Route::get('Pendaftaran','index')->name('Pendaftaran.index');
+    Route::get('Pendaftaran/{id}','edit')->name('Pendaftaran.edit');
+    Route::post('Pendaftaran','store')->name('Pendaftaran.store');
+
+   });
 
 Route::controller(dataallsiswa::class)->group(function () {
  Route::get('data siswa','view')->name('detailall.siswa');
