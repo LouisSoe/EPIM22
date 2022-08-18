@@ -24,11 +24,16 @@
                     @php
                         $no = 1
                     @endphp
+                   {{-- @php
+                      $image = DB::table('ekstrakurikulers')->where('id',5)->first();
+                      $images = explode('|', $ekstrakurikulers->image);
+                  @endphp --}}
+                  {{-- @dd($ekstrakurikulers) --}}
                     @forelse ($ekstrakurikuler as $ekstra)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $ekstra->nama_eskul }}</td>
-                         <td><img src="storage/{{ $ekstra->image }}" width="100" height="100"></td>
+                         {{-- <td><img src="{{URL::to($ekstrakurikuler)}}" width="100" height="100"></td> --}}
                         <td>{{ $ekstra->deskripsi }}</td>
                         <td>{{ $ekstra->created_at }}</td>
                         <td>

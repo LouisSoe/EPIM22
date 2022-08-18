@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ekstrakurikuler;
 use Illuminate\Support\Facades\Storage;
+use DB;
 
 
 class eskul extends Controller
@@ -12,7 +13,9 @@ class eskul extends Controller
     public function index()
     {
         $ekstrakurikuler = Ekstrakurikuler::all();
-        return view('admin.ekstrakurikuler.index', compact('ekstrakurikuler'));
+        return view('admin.ekstrakurikuler.index', [
+        'ekstrakurikuler' => $ekstrakurikuler,
+        ]);
     }
     public function view()
     {
@@ -39,11 +42,35 @@ class eskul extends Controller
             'deskripsi' => 'required',
             'image' => 'required'
         ]);
+        //   $files = [];
+        // if($request->hasfile('image'))
+        //  {
+        //     foreach($request->file('image') as $file)
+        //     {
+        //         $name = 'Eskul'.'.'.$file->getClientOriginalName();
+        //         $file->move(public_path('eskul_image/ekstra'), $name); 
+        //          $files[] = $name;  
+        //     }
+        //  }
+        $image = array();
+        if($files = $request->file('image')){
+            foreach ($files as $file) {
+                $image_name = md5(rand(1000, 10000));
+                $ext = strtolower($file->getClientOriginalExtension());
+                $image_full_name = $image_name.'.'.$ext;
+                $upload_path = 'public/eskul_image/';
+                $image_url = $upload_path.$image_full_name;
+                $file->move($upload_path, $image_full_name);
+                $image[] = $image_url;
+            }
+        }
+  
+        
 
         $eskul = Ekstrakurikuler::create([
             'nama_eskul' => $request->nama_eskul,
             'deskripsi' => $request->deskripsi,
-            'image' => $request->file('image')->store('ekstra'),
+            'image' => implode('|', $image),
         ]);
         if ($eskul) {
             return redirect()->route('ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan');

@@ -16,7 +16,7 @@ return new class extends Migration
          Schema::create('ekstrakurikulers', function (Blueprint $table) {
             $table->id();
             $table->string('nama_eskul')->unique();
-            $table->string('image')->nullable();
+            $table->string('image')->nullable();           
             $table->string('deskripsi');           
             $table->timestamps();
         });
