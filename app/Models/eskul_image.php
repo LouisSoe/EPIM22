@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ekstrakurikuler extends Model
+class eskul_image extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama_eskul','cover','deskripsi'];
-     
+    protected $fillable = ['eskul_id','image'];
 }

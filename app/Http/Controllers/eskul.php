@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ekstrakurikuler;
+use App\Models\eskul_image;
 use Illuminate\Support\Facades\Storage;
 use DB;
 
@@ -40,38 +41,34 @@ class eskul extends Controller
         $this->validate($request, [
             'nama_eskul' => 'required|string',
             'deskripsi' => 'required',
-            'image' => 'required'
+            'image' => 'required',
+            'cover' => 'required'
         ]);
-        //   $files = [];
-        // if($request->hasfile('image'))
-        //  {
-        //     foreach($request->file('image') as $file)
-        //     {
-        //         $name = 'Eskul'.'.'.$file->getClientOriginalName();
-        //         $file->move(public_path('eskul_image/ekstra'), $name); 
-        //          $files[] = $name;  
-        //     }
-        //  }
+
+        $eskul = Ekstrakurikuler::create([
+            'nama_eskul' => $request->nama_eskul,
+            'deskripsi' => $request->deskripsi,
+            'cover' => $request->file('cover')->store('cover')
+        ]);
+
         $image = array();
         if($files = $request->file('image')){
             foreach ($files as $file) {
                 $image_name = md5(rand(1000, 10000));
                 $ext = strtolower($file->getClientOriginalExtension());
                 $image_full_name = $image_name.'.'.$ext;
-                $upload_path = 'public/eskul_image/';
+                $upload_path = 'eskul_image/ekstra/';
                 $image_url = $upload_path.$image_full_name;
                 $file->move($upload_path, $image_full_name);
                 $image[] = $image_url;
             }
         }
-  
-        
-
-        $eskul = Ekstrakurikuler::create([
-            'nama_eskul' => $request->nama_eskul,
-            'deskripsi' => $request->deskripsi,
+        $image = eskul_image::create([
+           'eskul_id' => $eskul->id,
             'image' => implode('|', $image),
         ]);
+        //             'image' => implode('|', $image),
+        
         if ($eskul) {
             return redirect()->route('ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan');
         } else {

@@ -2,7 +2,7 @@
 /public/build
 /public/hot
 /public/storage
-/public/eskul_image/ekstra
+/public/eskul_image
 /storage/*.key
 /vendor
 .env

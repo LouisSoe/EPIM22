@@ -33,7 +33,7 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $ekstra->nama_eskul }}</td>
-                         {{-- <td><img src="{{URL::to($ekstrakurikuler)}}" width="100" height="100"></td> --}}
+                         <td><img src="storage/{{ $ekstra->cover }}" width="100" height="100"></td>
                         <td>{{ $ekstra->deskripsi }}</td>
                         <td>{{ $ekstra->created_at }}</td>
                         <td>

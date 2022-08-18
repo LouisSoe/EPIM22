@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-         Schema::create('ekstrakurikulers', function (Blueprint $table) {
+        Schema::create('eskul_images', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_eskul')->unique();
-            $table->string('cover');           
-            $table->string('deskripsi');           
+            $table->foreignId('eskul_id')->constrained('ekstrakurikulers');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('eskul_images');
     }
 };
