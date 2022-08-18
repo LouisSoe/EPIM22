@@ -31,8 +31,16 @@ class daftarcontroller extends Controller
     }
     public function datapendaftaran()
     {
-        $data = User::all();
-        return view('admin/dataPendaftaran', compact('data'));
+        $join = daftar::join('users', 'user_id', '=', 'users.id')
+                    ->join('ekstrakurikulers', 'eskul_id', '=', 'ekstrakurikulers.id')
+                    ->get(['users.*', 'ekstrakurikulers.nama_eskul']);
+        // $data = User::all();
+        $eskul = $join->sortBy('nama_eskul')->pluck('nama_eskul')->unique();
+        return view('admin.dataPendaftaran', [
+         // 'data' => $data,
+         'eskul' => $eskul,
+         'join' => $join,
+        ]);
     }
     // public function show($id)
     // {

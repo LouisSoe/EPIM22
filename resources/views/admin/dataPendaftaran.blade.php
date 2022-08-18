@@ -8,6 +8,13 @@
 
     <div class="card-body">
         <div class="table-responsive">
+            <select>
+                <option value="" selected disabled>filter</option>
+                @foreach($join as $i)
+                <option value="{{ $i->nama_eskul }}">{{ $i->nama_eskul }}</option>
+                @endforeach
+            </select>
+            {{-- @dd($join) --}}
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
@@ -23,12 +30,12 @@
                     @php
                         $no = 1
                     @endphp
-                    @forelse ($data as $bergabung)
+                    @forelse ($join as $bergabung)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $bergabung->name }}</td>
                         <td>{{ $bergabung->nim }}</td>
-                        <td>{{ $bergabung->prodi }}</td>
+                        <td>{{ $bergabung->nama_eskul }}</td>
                         <td>{{ $bergabung->created_at }}</td>
                         <td>
                             <form action="{{ route('daftar.destroy', $bergabung->id) }}" onsubmit="return confirm('Apakah Anda Yakin ? ')" method="post">
