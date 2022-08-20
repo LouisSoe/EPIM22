@@ -24,10 +24,14 @@
                                                  placeholder="Deskripsi">
                                         </div>
                                         <div class="form-group">
-                                            <input type="file" class="form-control" name="cover"  >
+                                            Cover Gambar
+                                            <br>
+                                            <input type="file" name="cover"  >
                                         </div>
                                         <div class="form-group">
-                                            <input type="file" class="form-control" name="image[]"  multiple>
+                                            Images
+                                            <br>
+                                            <input type="file" name="image[]"  multiple>
                                         </div>
                                         <button class="btn btn-primary btn-user btn-block">Simpan</button>
                                     </form>

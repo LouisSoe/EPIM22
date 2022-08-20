@@ -1,46 +1,24 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
-        <div class="col-xl-6 col-lg-12 col-md-9">
-            <div class="card o-hidden rounded border-0 shadow-lg my-5">
-                <div class="card-body p-0">
-                    <!-- Nested Row within Card Body -->
-                    <div class="p-5">
-                        <div class="text-center">
-                            <div class="text-center">
-                                <img class="mb-3 mt-2 rounded-circle" src="img/k.jpg" width="125px">
-                                <h5 class="text-center" style="color:gray;"><b>Louis Hazelnut</b></h5>
-                                <div class="row justify-content-center">
-                                    <div class="col-xl-12 col-lg-12 col-md-9">
-                                        <div class="card o-hidden rounded border-0 my-5">
-                                            <div class="bg-gray-200 card-body p-3">
-                                                <div class="text-left">NIM:</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 <body>
   <link href="css/style.css" rel="stylesheet">
   <div class="main-content">
     <!-- Top navbar -->
-   
+    
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px;">
       <!-- Mask -->
-      <span class="mask bg-gradient-default opacity-8"></span>
+      
+      <span class="mask bg-light-yellow opacity-8"></span>
+      <a class="btn rounded-circle btn-success" type="button" href="{{ route('homepage') }}"><i class="fas fa-arrow-left"></i></a>
+      
       <!-- Header container -->
       <div class="container-fluid d-flex align-items-center">
+        
         <div class="row">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello Jesse</h1>
+            <h1 class="display-2 text-white">Hello {{ strtoupper(Auth::user()->name) }}</h1>
             <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
           </div>
         </div>
@@ -67,21 +45,24 @@
               <div class="row">
                 <div class="col">
                   <div class="card-profile-stats d-flex justify-content-center mt-md-5">
-                    
+
                   </div>
                 </div>
               </div>
               <div class="text-center">
                 <h3>
-                  Jessica Jones
+                  {{ ucwords(Auth::user()->name) }}
                 </h3>
-              
-              
+
+
                 <div>
-                  <i class="ni education_hat mr-2"></i>University of Computer Science
+                  <i class="ni education_hat mr-2"></i>{{ ucwords(Auth::user()->prodi) }}
                 </div>
-                <hr class="my-4">
-                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
+                @if (Auth::user()->tentang_saya != null)
+                <hr>
+
+                <p>{{ Auth::user()->tentang_saya }}</p>
+                @endif
               </div>
             </div>
           </div>
@@ -91,41 +72,52 @@
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">My account</h3>
+                  <h3 class="mb-0">Akun Saya</h3>
                 </div>
-                <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Edit Profile</a>
-                </div>
+                
               </div>
             </div>
             <div class="card-body">
-              <form>
-                <h6 class="heading-small text-muted mb-4">User information</h6>
+              <form action="{{ route('user-profile-information.update') }}" method="POST">
+                @csrf
+                @method('PUT')
+                <h6 class="heading-small text-muted mb-4">Informasi User</h6>
                 <div class="pl-lg-4">
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-first-name">Nama Lengkap</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                        <label class="form-control-label" for="input-nama-lengkap">Nama Lengkap</label>
+                        <input type="text" name="name" id="input-nama-lengkap" class="form-control form-control-alternative" placeholder="Nama Lengkap" value="{{ Auth::user()->name }}">
                       </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-last-name">Email</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                        <label class="form-control-label" for="input-no-telp">Nomor Telp</label>
+                        <input type="text" name="no_hp" id="input-no-telp" class="form-control form-control-alternative" placeholder="Nomor Telp" value="{{ Auth::user()->no_hp }}">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-email">Email</label>
+                        <input type="text" name="email" id="input-email" class="form-control form-control-alternative" placeholder="Email" value="{{ Auth::user()->email }}">
                       </div>
                     </div>
                   </div>
                 </div>
                 <hr class="my-4">
                 <!-- Description -->
-                <h6 class="heading-small text-muted mb-4">About me</h6>
+                <h6 class="heading-small text-muted mb-4">Tentang Saya</h6>
                 <div class="pl-lg-4">
                   <div class="form-group focused">
-                    <label>About Me</label>
-                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                    <label>Tentang Saya</label>
+                    <textarea rows="4" name="tentang_saya" class="form-control form-control-alternative" placeholder="A few words about you ..." resize="none">{{ Auth::user()->tentang_saya }}</textarea>
                   </div>
                 </div>
+                <div class="text-right">
+
+                    <button class="btn btn-warning btn-user btn-block">Edit Profile</button>
+                </div>
+
               </form>
             </div>
           </div>

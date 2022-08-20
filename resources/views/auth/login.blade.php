@@ -16,13 +16,31 @@
                                     <form action="{{ route('login') }}" method="POST" class="user">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="email" name="email" class="form-control form-control-user"
+                                            <input type="email"  name="email" class="form-control form-control-user @error('email') is-invalid @enderror"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
+                                                @error('email')
+
+                                                <div class="invalid-feedback">
+            
+                                                    {{$message}}
+            
+                                                </div>
+            
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user"
+                                            <input type="password"  name="password" class="form-control form-control-user @error('password') is-invalid @enderror"
                                                 id="exampleInputPassword" placeholder="Password">
+                                                @error('password')
+
+                                                <div class="invalid-feedback">
+            
+                                                    {{$message}}
+            
+                                                </div>
+            
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             

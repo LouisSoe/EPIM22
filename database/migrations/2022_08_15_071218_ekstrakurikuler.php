@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_eskul')->unique();
             $table->string('cover');           
-            $table->string('deskripsi');           
+            $table->text('deskripsi');           
             $table->timestamps();
         });
     }

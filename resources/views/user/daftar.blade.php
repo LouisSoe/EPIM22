@@ -15,12 +15,22 @@
                             <form action="{{ route('Pendaftaran.store') }}" method="POST" class="user">
                                 @csrf
                                 <div class="form-group">
-                                   
-                                        <input type="text" name="eskul_id" value="{{ $data->id }}">
-                                        <input type="text" name="user_id" value="{{ Auth::user()->id }}">
+                                    <input type="text" class="form-control form-control-user" disabled value="{{ $data->nama_eskul }}">
+                                    <input type="hidden" name="eskul_id" value="{{ $data->id }}">
+                                
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" disabled value="{{ Auth::user()->name }}">
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 </div>
 
-                                <button class="btn btn-warning btn-user btn-block">Simpan</button>
+                                <div class="form-group">
+                                    <input type="checkbox" name="setuju">
+                                    Saya Terima Dengan Pilihan Saya
+                                </div>
+
+
+                                <button class="btn btn-warning btn-user btn-block">KIRIM</button>
                             </form>
 
                         </div>

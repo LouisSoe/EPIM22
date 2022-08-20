@@ -86,7 +86,11 @@ body {
 .text-black {
   color: #000000;
 }
-
+.btn-green {
+  color: #fff;
+  background-color: #169b6b;
+  border-color: #169b6b;
+}
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }

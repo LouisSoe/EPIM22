@@ -1,61 +1,54 @@
 @extends('layouts.admin')
 @section('content')
-<!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Tabel Ekstrakurikuler</h1>
+    <!-- Page Heading -->
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
+    <h1 class="h3 mb-2 text-gray-800">Tabel Ekstrakurikuler</h1>
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <select>
-                <option value="" selected disabled>filter</option>
-                @foreach($join as $i)
-                <option value="{{ $i->nama_eskul }}">{{ $i->nama_eskul }}</option>
-                @endforeach
-            </select>
-            {{-- @dd($join) --}}
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Lengkap</th>
-                        <th>NIM</th>
-                        <th>Prodi</th>
-                        <th>Tanggal Bergabung</th>
-                        <th>Opsi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php
-                        $no = 1
-                    @endphp
-                    @forelse ($join as $bergabung)
-                    <tr>
-                        <td>{{ $no++ }}</td>
-                        <td>{{ $bergabung->name }}</td>
-                        <td>{{ $bergabung->nim }}</td>
-                        <td>{{ $bergabung->nama_eskul }}</td>
-                        <td>{{ $bergabung->created_at }}</td>
-                        <td>
-                            <form action="{{ route('daftar.destroy', $bergabung->id) }}" onsubmit="return confirm('Apakah Anda Yakin ? ')" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger btn-sm">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @empty
-                    <tr>
-                        <th colspan="8" class="text-center">Data Tidak Ada</th>
-                    </tr>
-                    @endforelse
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
 
-                </tbody>
-            </table>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Lengkap</th>
+                            <th>NIM</th>
+                            <th>Prodi</th>
+                            <th>Mengikuti</th>
+                            <th>Tanggal Bergabung</th>
+                            <th>Opsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                            $no = 1
+                        @endphp
+                        {{-- @dd($join) --}}
+                        @foreach ($join as $d)
+                        <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $d->name }}</td>
+                                <td>{{ $d->nim }}</td>
+                                <td>{{ $d->prodi }}</td>
+                                <td>{{ $d->nama_eskul }}</td>
+                                <td>{{ $d->created_at }}</td>
+                                <td>
+                                    <form action="{{ route('Pendaftaran.destroy', $d->id) }}"
+                                        onsubmit="return confirm('Apakah Anda Yakin ? ')" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

@@ -112,11 +112,5 @@ class eskul extends Controller
         $eskul = Ekstrakurikuler::findOrFail($id);
         $eskul->delete();
                     return redirect()->route('ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan');
-
-        // if ($eskul) {
-        //     return redirect()->route('ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan');
-        // } else {
-        //     return redirect()->route('ekstrakurikuler.index')->with('error', 'Ekstrakurikuler gagal ditambahkan');
-        // }
     }
 }

@@ -102,6 +102,16 @@
     margin-bottom: 1rem;
   }
   
+  .bg-light-yellow{
+    background: rgb(91,75,0);
+background: linear-gradient(90deg, rgba(91,75,0,1) 0%, rgba(199,185,0,1) 47%, rgba(193,174,0,1) 100%);
+  }
+  .btn-warning {
+    color: #fff;
+    border-color:#fb6340 ;
+    background-color:#fb6340 ;
+  }
+  
   address {
     font-style: normal;
     line-height: inherit;

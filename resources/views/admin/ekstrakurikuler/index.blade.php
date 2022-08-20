@@ -37,8 +37,8 @@
                         <td>{{ $ekstra->deskripsi }}</td>
                         <td>{{ $ekstra->created_at }}</td>
                         <td>
-                            <form action="{{ route('ekstrakurikuler.destroy', $ekstra->id) }}" onsubmit="return confirm('Apakah Anda Yakin ? ')" method="post">
-                                <a href="{{ route('ekstrakurikuler.edit', $ekstra->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{{ route('ekstrakurikuler.destroy', $ekstra->id) }}" onsubmit="return confirm('Apakah Anda Yakin ? ')" class="d-inline-flex" method="post">
+                                <a href="{{ route('ekstrakurikuler.edit', $ekstra->id) }}" class="btn btn-warning btn-sm mr-2">Edit</a>
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-sm">Delete</button>

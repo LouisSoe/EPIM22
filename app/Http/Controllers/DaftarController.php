@@ -22,6 +22,9 @@ class daftarcontroller extends Controller
     }
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'setuju' => 'accepted'
+        ]);
         $daftar = daftar::create([
             'user_id' => $request->user_id,
             'eskul_id' => $request->eskul_id,
@@ -33,12 +36,13 @@ class daftarcontroller extends Controller
     {
         $join = daftar::join('users', 'user_id', '=', 'users.id')
                     ->join('ekstrakurikulers', 'eskul_id', '=', 'ekstrakurikulers.id')
-                    ->get(['users.*', 'ekstrakurikulers.nama_eskul']);
+                    ->get(['users.*', 'ekstrakurikulers.nama_eskul','daftars.*']);
         // $data = User::all();
         $eskul = $join->sortBy('nama_eskul')->pluck('nama_eskul')->unique();
         return view('admin.dataPendaftaran', [
          // 'data' => $data,
          'eskul' => $eskul,
+        //  'data' => $data,
          'join' => $join,
         ]);
     }
@@ -52,9 +56,7 @@ class daftarcontroller extends Controller
     // }
     public function destroy($id)
     {
-      $user = Auth::user()->id;
-        $user->update([
-            'ekstrakurikuler_id' => null,
-        ]);
+        User::where('id', '=', $id)->update(['ekstrakurikuler_id'=>null]);
+        return redirect()->back()->with('success', 'Data Berhasil Dihapus');
     }
 }
