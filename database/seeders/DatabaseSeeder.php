@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             eskul::class,
-            user::class
+             eskul_image::class
         ]);
     }
 }

@@ -49,7 +49,9 @@
                                 </div>
                                 <button type="submit" class="btn btn-warning btn-user btn-block">register</button>
                             </form>
-
+                                   <div class="text-center">
+                                        <a class="small" href="{{ route('login') }}">Have a account?</a>
+                                    </div>
                         </div>
                     </div>
                 </div>

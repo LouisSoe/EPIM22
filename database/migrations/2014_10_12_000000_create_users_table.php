@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('prodi');
             $table->string('tentang_saya')->nullable();
             $table->string('no_hp');
+            $table->boolean('is_admin')->default(0)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

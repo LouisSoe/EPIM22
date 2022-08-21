@@ -18,26 +18,28 @@ use App\Http\Controllers\dataallsiswa;
 |
 */
 
-Route::get('/', [eskul::class, 'view'])->name('homepage');
-Route::get('/profile', function () {
-    return view('user.userprofile');
-})->name('profile');
+// Route admin wajib login
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
-})->name('dashboard');
+})->name('admin.dashboard')->middleware('auth','admin');
+Route::resource('ekstrakurikuler', eskul::class)->middleware('auth','admin');
+Route::get('datapendaftaran', [DaftarController::class,'datapendaftaran'])->name('datapendaftaran')->middleware('auth','admin');
 
-Route::get('/detail/{id}', [eskul::class,'detail'])->name('detail');
-Route::get('/testrafly', function () {
-    return view('test.testfront');
-});
-Route::resource('ekstrakurikuler', eskul::class);
-Route::get('datapendaftaran', [DaftarController::class, 'datapendaftaran'])->name('datapendaftaran');
-
-Route::controller(DaftarController::class)->group(function () {
+//route wajib login
+Route::middleware(['auth'])->group(function () {
+   Route::get('/profile', function () {
+    return view('user.userprofile');
+       })->name('profile');
+    Route::controller(DaftarController::class)->group(function () {
     Route::get('Pendaftaran/{id}','index')->name('Pendaftaran.edit');
-    Route::post('Pendafataran', 'store')->name('Pendaftaran.store');
+    Route::post('Pendafataran/{id}', 'store')->name('Pendaftaran.store');
     Route::put('Pendaftaran/delete/{id}','destroy')->name('Pendaftaran.destroy');
+      });
 });
+
+// Route Tanpa Login
+Route::get('/', [eskul::class, 'view'])->name('homepage');
+Route::get('/detail/{id}', [eskul::class,'detail'])->name('detail');
 Route::controller(dataallsiswa::class)->group(function () {
  Route::get('datasiswa','view')->name('detailall.siswa');
 });

@@ -44,7 +44,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('dashboard') }}">
+                <a class="nav-link" href="{{ route('admin.dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -74,7 +74,8 @@
             </li>
 
             <li class="nav-item">
-                 <a class="nav-link" href="{{ route('datapendaftaran') }}">                    <i class="fas fa-fw fa-table"></i>
+                 <a class="nav-link" href="{{ route('datapendaftaran') }}">                    
+                    <i class="fas fa-fw fa-table"></i>
                     <span>Data Pendaftaran</span></a>
             </li>
 

@@ -51,10 +51,13 @@
 
                     <!-- Nav Item - User Information -->
                     <ul class="nav justify-content-center">
+                        @if(Auth::check())
+                        
+                        @else
                         <li class="nav-item ml-1 w-3">
                             <a class="mt-3 btn btn-success mr-3" href="{{ route('login') }}">Login</a>
                         </li>
-
+                         @endif
                         <li class="nav-item ml-1 w-3">
                             <a class="mt-3 btn btn-primary mr-3" href="{{ route('detailall.siswa') }}">Daftar Siswa</a>
                         </li>
@@ -73,13 +76,30 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
+                                @if(Auth::check())
+                                 @if(Auth::user()->is_admin === 1)
+                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Admin dashboard
+                                </a>
+                                @endif
+                                @endif
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#" data-toggle="modal"
+                                @if(Auth::check())
+                                    <a class="dropdown-item text-danger" href="#" data-toggle="modal"
                                     data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
                                     Logout
                                 </a>
+                            @else
+                                <a class="dropdown-item" href="{{ route('login') }}">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+                                    Login
+                                </a>
+                            
                             </div>
+                            
+                            @endif
                         </li>
 
 
@@ -148,6 +168,7 @@
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
 
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
