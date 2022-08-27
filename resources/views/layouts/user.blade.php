@@ -77,6 +77,14 @@
                                     Profile
                                 </a>
                                 @if(Auth::check())
+                                @if(Auth::user()->is_admin === 1)
+                                <a class="dropdown-item" href="{{ route('request.eskul',Auth::user()->id) }}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Request Penghapusan Data 
+                                </a>
+                                @endif
+                                @endif
+                                @if(Auth::check())
                                  @if(Auth::user()->is_admin === 1)
                                 <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

@@ -5,6 +5,7 @@ use App\Http\Controllers\eskul;
 use App\Http\Resources\Ekstrakurikuler;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dataallsiswa;
+use App\Http\Controllers\requesthapusdata;
 
 
 /*
@@ -35,6 +36,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('Pendafataran/{id}', 'store')->name('Pendaftaran.store');
     Route::put('Pendaftaran/delete/{id}','destroy')->name('Pendaftaran.destroy');
       });
+    Route::controller(requesthapusdata::class)->group(function () {
+          Route::get('Keluar Eskul/{id}','index')->name('request.eskul');
+          Route::post('Keluar Eskul','store')->name('request.store');
+
+          Route::get('DataPenghapusan','admin')->name('admin.page');
+           Route::delete('DataPenghapusan/{id}','destroy')->name('request.destroy');
+      });
 });
 
 // Route Tanpa Login
@@ -42,4 +50,7 @@ Route::get('/', [eskul::class, 'view'])->name('homepage');
 Route::get('/detail/{id}', [eskul::class,'detail'])->name('detail');
 Route::controller(dataallsiswa::class)->group(function () {
  Route::get('datasiswa','view')->name('detailall.siswa');
+ Route::get('getdatasiswa','getdata')->name('detailall.getdata');
 });
+
+

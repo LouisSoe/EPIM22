@@ -14,7 +14,6 @@
                       $image = DB::table('eskul_images')->where('id',$eskul->id)->first();
                       $images = explode('|', $image->image);
                   @endphp
-                              {{-- @dd($image) --}}
 
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -32,11 +31,11 @@
     <br>
     <br>
     <div class="col">
-        
+
         <div class="text-center mx-auto col-md-5">
             <h4>Deskripsi :</h4>
             <h6>{{ $eskul->deskripsi }}</h6>
-            
+
             <br>
             <br>
             <a href="{{ route('Pendaftaran.edit',$eskul->id) }}" class="btn btn-md btn-warning mb-5 ">Daftar</a>
@@ -48,3 +47,4 @@
 
 
 @endsection
+

@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
-class user extends Seeder
+class userakun extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,7 +21,15 @@ class user extends Seeder
             'email'  => 'user@email.com',
             'nim' => '112',
             'prodi' => 'jurusan',
-            'ekstrakurikulers_id' => '1',
+            'no_hp' => '03223023023',
+           ]);
+        User::create([
+            'name' => 'admin',
+            'password' => bcrypt('123456'),
+            'email'  => 'admin@email.com',
+            'nim' => '002',
+            'is_admin' => '1',
+            'prodi' => 'jurusan',
             'no_hp' => '03223023023',
            ]);
     }

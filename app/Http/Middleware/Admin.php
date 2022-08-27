@@ -18,10 +18,9 @@ class Admin
     public function handle($request, Closure $next)
     {
         if (Auth::user() &&  Auth::user()->is_admin == 1) {
-                return redirect()->route('admin.dashboard');
-        }else{
+			return $next($request);	
+        }				
              return redirect('/');
-         }
 
        
     }

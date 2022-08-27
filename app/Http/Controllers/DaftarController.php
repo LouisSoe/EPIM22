@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\ekstrakurikuler;
 use App\Models\daftar;
 use App\Models\User;
+use DB;
+use Auth;
 
 class daftarcontroller extends Controller
 {
@@ -16,19 +18,23 @@ class daftarcontroller extends Controller
      */
     public function index($id)
     {
-         $data = Ekstrakurikuler::findOrFail($id);
-
-        return view('user.daftar',compact('data'));
+        $data = Ekstrakurikuler::findOrFail($id);
+		$cek = daftar::where('user_id', Auth::user()->id)->first();
+        return view('user.daftar',[
+         'data' => $data,
+         'cek' => $cek
+        ]);
     }
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
+        
         $this->validate($request, [
             'setuju' => 'accepted'
         ]);
+  
         $daftar = daftar::create([
             'user_id' => $request->user_id,
-            'eskul_id' => $request->eskul_id,
-            
+            'eskul_id' => $request->eskul_id,  
         ]);
         return redirect()->route('homepage');
     }
@@ -46,14 +52,6 @@ class daftarcontroller extends Controller
          'join' => $join,
         ]);
     }
-    // public function show($id)
-    // {
-    //     $data = Pendaftaran::findOrFail($id);
-    //     $ekstras = ekstrakurikuler::all();
-    //     return view('admin/dataPendaftaran', compact('data', 'ekstras'));
-    //     $data = User::latest()->get();
-    //     return view('admin.dataPendaftaran', compact('data'));
-    // }
     public function destroy($id)
     {
         User::where('id', '=', $id)->update(['ekstrakurikuler_id'=>null]);

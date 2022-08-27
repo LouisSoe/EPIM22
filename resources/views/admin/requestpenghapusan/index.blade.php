@@ -2,7 +2,7 @@
 @section('content')
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Tabel Jurusan</h1>
+<h1 class="h3 mb-2 text-gray-800">Tabel Penghapusan data user</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -13,23 +13,26 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Jurusan</th>
-                        <th>Ditambahkan Tanggal</th>
-                        <th>Opsi</th>
+                        <th>Alasan Keluar</th>
+                        <th>Eskul yang diikuti</th>
+                        <th>user</th>
+                        <th>opsi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php
                         $no = 1
                     @endphp
-                    @forelse ($jurusan as $ekstra)
+                    @forelse ($query as $ekstra)
                     <tr>
                         <td>{{ $no++ }}</td>
+                        <td>{{ $ekstra->alasan }}</td>
                         <td>{{ $ekstra->nama_eskul }}</td>
-                        <td>{{ $ekstra->created_at }}</td>
+                        <td>{{ $ekstra->name }}</td>
+
                         <td>
-                            <form action="{{ route('jurusan.destroy', $ekstra->id) }}" onsubmit="return confirm('Apakah Anda Yakin ? ')" class="d-inline-flex" method="post">
-                                <a href="{{ route('jurusan.edit', $ekstra->id) }}" class="btn btn-warning btn-sm mr-2">Edit</a>
+                            <form action="{{ route('request.destroy', $ekstra->id) }}" onsubmit="return confirm('Apakah Anda Yakin ? ')" class="d-inline-flex" method="post">
+                                <a href="#" class="btn btn-warning btn-sm mr-2" type="button">tidak jadi</a>
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-sm">Delete</button>
